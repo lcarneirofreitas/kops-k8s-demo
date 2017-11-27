@@ -67,3 +67,29 @@ kubectl get nodes --show-labels
 ssh -A -i ~/.ssh/id_rsa admin@bastion.$DOMAIN_NAME
 kubectl -n kube-system get pods
 ```
+
+# run app1 kubernetes
+
+- create pod server apache + php
+```
+kubectl create -f app1/prod/deployment.json
+```
+
+- create loadbalance to access aplication
+```
+kubectl create -f app1/prod/loadbalancer.json
+```
+
+- discovery dns loadbalance to access aplication
+```
+kubectl describe services | grep -w "LoadBalancer Ingress"
+```
+
+- validade access to aplication
+```
+curl -s $(kubectl describe services | grep -w "LoadBalancer Ingress" | awk '{print $3}')
+
+<H1>My container id: apache-prod-deployment-518621942-f7hzr</H1>
+<H2>My ipaddress: 100.97.153.68</H2>
+
+```
