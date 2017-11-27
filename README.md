@@ -7,6 +7,17 @@ export BUCKET_NAME=name-bucket-s3
 export DOMAIN_NAME=name-domain-dns
 ```
 
+- you need to import aws access keys
+```
+aws configure
+
+ls -la .aws/
+total 16
+drwxr-xr-x  2 user user 4096 Set 18 13:47 .
+drwxr-xr-x 72 user user 4096 Nov 27 17:05 ..
+-r--------  1 user user   62 Nov  9 09:08 config
+-r--------  1 user user  131 Nov  9 09:08 credentials
+```
 
 - install kops
 ```
