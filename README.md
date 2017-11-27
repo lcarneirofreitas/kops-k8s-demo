@@ -86,17 +86,17 @@ kubectl -n kube-system get pods
 kubectl create -f app1/prod/deployment.json
 ```
 
-- create loadbalance to access aplication
+- create loadbalance to access application
 ```
 kubectl create -f app1/prod/loadbalancer.json
 ```
 
-- discovery dns loadbalance to access aplication
+- discovery dns loadbalance to access application
 ```
 kubectl describe services | grep -w "LoadBalancer Ingress"
 ```
 
-- validade access to aplication
+- validade access to application
 ```
 curl -s $(kubectl describe services | grep -w "LoadBalancer Ingress" | awk '{print $3}')
 
@@ -104,3 +104,11 @@ curl -s $(kubectl describe services | grep -w "LoadBalancer Ingress" | awk '{pri
 <H2>My ipaddress: 100.97.153.68</H2>
 
 ```
+
+# Finish
+
+- destroy cluster kubernetes
+```
+kops delete cluster --state=s3://$BUCKET_NAME --yes
+```
+
