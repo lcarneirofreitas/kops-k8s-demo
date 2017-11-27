@@ -56,7 +56,7 @@ aws route53 create-hosted-zone \
 --caller-reference $ID
 ```
 
-- create cluster kubernetes kops
+- create cluster kubernetes with kops
 ```
 kops create cluster \
     --name $DOMAIN_NAME \
